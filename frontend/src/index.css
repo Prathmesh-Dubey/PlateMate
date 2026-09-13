@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Enables class-based dark mode (Tailwind v4 has no tailwind.config.js darkMode
+   option — this is the CSS-first equivalent of darkMode: 'class'). Any `dark:`
+   utility now activates when an ancestor carries the `.dark` class, which the
+   ThemeProvider (src/theme.tsx) toggles on <html>. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@import "./dark-overrides.css";

@@ -1,0 +1,4371 @@
+{
+    "info": {
+        "name": "Mess Management System API",
+        "description": "Complete API collection for Mess Management System",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "1. Candidate Management",
+            "item": [
+                {
+                    "name": "Create Candidate",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"fullName\": \"John Doe\",\n  \"phoneNumber\": \"9876543210\",\n  \"email\": \"john@gmail.com\",\n  \"address\": \"123 Main Street, Delhi\",\n  \"joiningDate\": \"2026-09-01\",\n  \"monthlyRate\": 5000,\n  \"status\": \"ACTIVE\",\n  \"emergencyContact\": \"Jane Doe\",\n  \"emergencyPhone\": \"9876543211\",\n  \"notes\": \"Regular candidate\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/candidates",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "candidates"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Candidates",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/candidates",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "candidates"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Active Candidates",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/candidates/active",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "candidates",
+                                "active"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Left Candidates",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/candidates/left",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "candidates",
+                                "left"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Candidate Stats",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/candidates/stats",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "candidates",
+                                "stats"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Candidate By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/candidates/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "candidates",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Candidate By Candidate ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/candidates/by-id/{candidateId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "candidates",
+                                "by-id",
+                                "{candidateId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Candidate",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"fullName\": \"John Updated Doe\",\n  \"phoneNumber\": \"9876543210\",\n  \"email\": \"john.updated@gmail.com\",\n  \"address\": \"456 New Street, Delhi\",\n  \"joiningDate\": \"2026-09-01\",\n  \"monthlyRate\": 5500,\n  \"status\": \"ACTIVE\",\n  \"emergencyContact\": \"Jane Doe\",\n  \"emergencyPhone\": \"9876543211\",\n  \"notes\": \"Updated candidate\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/candidates/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "candidates",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Mark Candidate as Left",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/candidates/{id}/mark-left?leavingDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "candidates",
+                                "{id}",
+                                "mark-left"
+                            ],
+                            "query": [
+                                {
+                                    "key": "leavingDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Candidate",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/candidates/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "candidates",
+                                "{id}"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "2. Attendance Management",
+            "item": [
+                {
+                    "name": "Mark Attendance",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"candidateId\": \"{candidateId}\",\n  \"attendanceDate\": \"2026-09-06\",\n  \"status\": \"IN\",\n  \"inTime\": \"09:00:00\",\n  \"outTime\": \"18:00:00\",\n  \"remarks\": \"Present\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/mark",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "mark"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Attendance",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"candidateId\": \"{candidateId}\",\n  \"attendanceDate\": \"2026-09-06\",\n  \"status\": \"OUT\",\n  \"remarks\": \"Left early\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Attendance By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Attendance By Date",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/date/2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "date",
+                                "2026-09-06"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Attendance By Candidate",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/candidate/{candidateId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "candidate",
+                                "{candidateId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Attendance By Candidate & Date Range",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/candidate/{candidateId}/range?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "candidate",
+                                "{candidateId}",
+                                "range"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Present Candidates",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/present/2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "present",
+                                "2026-09-06"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Absent Candidates",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/absent/2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "absent",
+                                "2026-09-06"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Bulk Mark Attendance",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"attendanceDate\": \"2026-09-06\",\n  \"presentCandidateIds\": [\"candidate-id-1\", \"candidate-id-2\"],\n  \"absentCandidateIds\": [\"candidate-id-3\"]\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/bulk",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "bulk"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Attendance",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Daily Attendance Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/summary/daily?date=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "summary",
+                                "daily"
+                            ],
+                            "query": [
+                                {
+                                    "key": "date",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Today's Attendance Stats",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/stats/today",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "stats",
+                                "today"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Monthly Attendance Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/monthly-summary?candidateId={candidateId}&month=9&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "monthly-summary"
+                            ],
+                            "query": [
+                                {
+                                    "key": "candidateId",
+                                    "value": "{candidateId}"
+                                },
+                                {
+                                    "key": "month",
+                                    "value": "9"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Auto Mark Absent",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/attendance/auto-mark-absent",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "attendance",
+                                "auto-mark-absent"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "3. Meal Management",
+            "item": [
+                {
+                    "name": "Mark Meal",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"candidateId\": \"{candidateId}\",\n  \"mealDate\": \"2026-09-06\",\n  \"mealType\": \"LUNCH\",\n  \"isTaken\": true,\n  \"mealPreference\": \"VEG\",\n  \"remarks\": \"Good meal\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/mark",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "mark"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Meal",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"candidateId\": \"{candidateId}\",\n  \"mealDate\": \"2026-09-06\",\n  \"mealType\": \"LUNCH\",\n  \"isTaken\": false,\n  \"mealPreference\": \"NON_VEG\",\n  \"remarks\": \"Updated meal\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Meal By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Meals By Date",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/date/2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "date",
+                                "2026-09-06"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Meals By Candidate",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/candidate/{candidateId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "candidate",
+                                "{candidateId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Meals By Candidate & Date",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/candidate/{candidateId}/date/2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "candidate",
+                                "{candidateId}",
+                                "date",
+                                "2026-09-06"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Meals By Candidate & Date Range",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/candidate/{candidateId}/range?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "candidate",
+                                "{candidateId}",
+                                "range"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Meals By Type & Date",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/type/LUNCH/date/2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "type",
+                                "LUNCH",
+                                "date",
+                                "2026-09-06"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Bulk Mark Meals",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"mealDate\": \"2026-09-06\",\n  \"mealType\": \"LUNCH\",\n  \"candidateIds\": [\"candidate-id-1\", \"candidate-id-2\"],\n  \"mealPreference\": \"VEG\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/bulk",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "bulk"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Meal",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Daily Meal Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/summary/daily?date=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "summary",
+                                "daily"
+                            ],
+                            "query": [
+                                {
+                                    "key": "date",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Today's Meal Stats",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/stats/today",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "stats",
+                                "today"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Candidate Meal Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/candidate-summary?candidateId={candidateId}&month=9&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "candidate-summary"
+                            ],
+                            "query": [
+                                {
+                                    "key": "candidateId",
+                                    "value": "{candidateId}"
+                                },
+                                {
+                                    "key": "month",
+                                    "value": "9"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Candidates Who Missed Meal",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/meals/missed?date=2026-09-06&mealType=LUNCH",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "meals",
+                                "missed"
+                            ],
+                            "query": [
+                                {
+                                    "key": "date",
+                                    "value": "2026-09-06"
+                                },
+                                {
+                                    "key": "mealType",
+                                    "value": "LUNCH"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "4. Expense Management",
+            "item": [
+                {
+                    "name": "Create Expense",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"itemName\": \"Rice\",\n  \"quantity\": 50,\n  \"unit\": \"kg\",\n  \"rate\": 45,\n  \"category\": \"Grocery\",\n  \"subCategory\": \"Grains\",\n  \"vendorName\": \"Kiran Store\",\n  \"vendorPhone\": \"9876543210\",\n  \"invoiceNumber\": \"INV-001\",\n  \"expenseDate\": \"2026-09-06\",\n  \"paymentMethod\": \"CASH\",\n  \"paymentStatus\": \"PAID\",\n  \"remarks\": \"Monthly rice purchase\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Expense",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"itemName\": \"Rice Updated\",\n  \"quantity\": 60,\n  \"unit\": \"kg\",\n  \"rate\": 42,\n  \"category\": \"Grocery\",\n  \"subCategory\": \"Grains\",\n  \"vendorName\": \"Kiran Store\",\n  \"vendorPhone\": \"9876543210\",\n  \"invoiceNumber\": \"INV-001\",\n  \"expenseDate\": \"2026-09-06\",\n  \"paymentMethod\": \"CASH\",\n  \"paymentStatus\": \"PAID\",\n  \"remarks\": \"Updated rice purchase\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Expense By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Expenses By Date",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/date/2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "date",
+                                "2026-09-06"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Expenses By Date Range",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/range?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "range"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Expenses By Category",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/category/Grocery",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "category",
+                                "Grocery"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Expenses By Category & Date Range",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/category/Grocery/range?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "category",
+                                "Grocery",
+                                "range"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Expense",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Total Expenses",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/total?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "total"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Today's Total Expenses",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/total/today",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "total",
+                                "today"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Expense Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/summary?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "summary"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Category-wise Expenses",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/category-wise?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "category-wise"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Monthly Expenses",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/monthly?year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "monthly"
+                            ],
+                            "query": [
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Daily Expenses For Month",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/expenses/daily/9/2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "expenses",
+                                "daily",
+                                "9",
+                                "2026"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "5. Stock Management",
+            "item": [
+                {
+                    "name": "Create Stock Item",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"itemName\": \"Basmati Rice\",\n  \"category\": \"Grocery\",\n  \"subCategory\": \"Grains\",\n  \"unit\": \"kg\",\n  \"currentStock\": 100,\n  \"minimumStockLevel\": 20,\n  \"maximumStockLevel\": 200,\n  \"unitPrice\": 45,\n  \"description\": \"Premium basmati rice\",\n  \"supplierName\": \"Kiran Store\",\n  \"supplierContact\": \"9876543210\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Stock Item",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"itemName\": \"Basmati Rice Updated\",\n  \"category\": \"Grocery\",\n  \"subCategory\": \"Grains\",\n  \"unit\": \"kg\",\n  \"currentStock\": 150,\n  \"minimumStockLevel\": 25,\n  \"maximumStockLevel\": 250,\n  \"unitPrice\": 48,\n  \"description\": \"Premium basmati rice updated\",\n  \"supplierName\": \"Kiran Store\",\n  \"supplierContact\": \"9876543210\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Stock Item By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Stock Item By Name",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/name/Basmati Rice",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "name",
+                                "Basmati Rice"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Stock Items",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Active Stock Items",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/active",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "active"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Stock Items By Category",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/category/Grocery",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "category",
+                                "Grocery"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Low Stock Items",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/low-stock",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "low-stock"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Over Stock Items",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/over-stock",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "over-stock"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Stock Item",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Toggle Stock Item Status",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/{id}/toggle",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "{id}",
+                                "toggle"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Add Stock Transaction",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"stockItemId\": \"{stockItemId}\",\n  \"transactionType\": \"PURCHASE\",\n  \"quantity\": 50,\n  \"unitPrice\": 45,\n  \"transactionDate\": \"2026-09-06\",\n  \"referenceNumber\": \"INV-001\",\n  \"referenceType\": \"EXPENSE\",\n  \"remarks\": \"Bulk purchase\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/transactions",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "transactions"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Stock Transaction By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/transactions/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "transactions",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Transactions By Stock Item",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/transactions/item/{stockItemId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "transactions",
+                                "item",
+                                "{stockItemId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Transactions By Date Range",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/transactions/range?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "transactions",
+                                "range"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Transactions By Type",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/transactions/type/PURCHASE",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "transactions",
+                                "type",
+                                "PURCHASE"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Stock (Set New Value)",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/{id}/stock?newStock=200",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "{id}",
+                                "stock"
+                            ],
+                            "query": [
+                                {
+                                    "key": "newStock",
+                                    "value": "200"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Add to Stock",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/{id}/add?quantity=25&reference=PURCHASE&remarks=Added stock",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "{id}",
+                                "add"
+                            ],
+                            "query": [
+                                {
+                                    "key": "quantity",
+                                    "value": "25"
+                                },
+                                {
+                                    "key": "reference",
+                                    "value": "PURCHASE"
+                                },
+                                {
+                                    "key": "remarks",
+                                    "value": "Added stock"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Deduct from Stock",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/{id}/deduct?quantity=10&reference=USAGE&remarks=Used in cooking",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "{id}",
+                                "deduct"
+                            ],
+                            "query": [
+                                {
+                                    "key": "quantity",
+                                    "value": "10"
+                                },
+                                {
+                                    "key": "reference",
+                                    "value": "USAGE"
+                                },
+                                {
+                                    "key": "remarks",
+                                    "value": "Used in cooking"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Stock Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/summary",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "summary"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Stock Summary By Category",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/summary/category/Grocery",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "summary",
+                                "category",
+                                "Grocery"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Total Stock Value",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/total-value",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "total-value"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Stock History",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/history/{stockItemId}?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "history",
+                                "{stockItemId}"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Upload Stock Images",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "images",
+                                    "value": "",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/{id}/images",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "{id}",
+                                "images"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Set Primary Image",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/{id}/primary-image?imageUrl=image-url-here",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "{id}",
+                                "primary-image"
+                            ],
+                            "query": [
+                                {
+                                    "key": "imageUrl",
+                                    "value": "image-url-here"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Remove Stock Image",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/items/{id}/images?imageUrl=image-url-here",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "items",
+                                "{id}",
+                                "images"
+                            ],
+                            "query": [
+                                {
+                                    "key": "imageUrl",
+                                    "value": "image-url-here"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Check Low Stock Alerts",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/stock/alerts/check",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "stock",
+                                "alerts",
+                                "check"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "6. Staff Management",
+            "item": [
+                {
+                    "name": "Create Staff",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"fullName\": \"Raj Kumar\",\n  \"position\": \"Cook\",\n  \"phoneNumber\": \"9876543210\",\n  \"email\": \"raj@gmail.com\",\n  \"address\": \"123 Staff Colony\",\n  \"joiningDate\": \"2026-01-01\",\n  \"baseSalary\": 25000,\n  \"employmentType\": \"FULL_TIME\",\n  \"status\": \"ACTIVE\",\n  \"emergencyContact\": \"Ramesh Kumar\",\n  \"emergencyPhone\": \"9876543211\",\n  \"bankName\": \"SBI\",\n  \"bankAccountNumber\": \"1234567890\",\n  \"ifscCode\": \"SBIN0001234\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Staff",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"fullName\": \"Raj Kumar Updated\",\n  \"position\": \"Head Cook\",\n  \"phoneNumber\": \"9876543210\",\n  \"email\": \"raj.updated@gmail.com\",\n  \"address\": \"456 Staff Colony\",\n  \"joiningDate\": \"2026-01-01\",\n  \"baseSalary\": 28000,\n  \"employmentType\": \"FULL_TIME\",\n  \"status\": \"ACTIVE\",\n  \"emergencyContact\": \"Ramesh Kumar\",\n  \"emergencyPhone\": \"9876543211\",\n  \"bankName\": \"SBI\",\n  \"bankAccountNumber\": \"1234567890\",\n  \"ifscCode\": \"SBIN0001234\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Staff By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Staff By Staff ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/staff-id/{staffId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "staff-id",
+                                "{staffId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Staff",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Active Staff",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/active",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "active"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Staff By Position",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/position/Cook",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "position",
+                                "Cook"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Staff",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Toggle Staff Status",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/{id}/toggle",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "{id}",
+                                "toggle"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Staff Payment",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"staffId\": \"{staffId}\",\n  \"paymentDate\": \"2026-09-06\",\n  \"amount\": 25000,\n  \"paymentMonth\": \"SEPTEMBER_2026\",\n  \"paymentYear\": 2026,\n  \"paymentMonthNumber\": 9,\n  \"bonus\": 1000,\n  \"deductions\": 500,\n  \"paymentMethod\": \"BANK_TRANSFER\",\n  \"transactionId\": \"TXN123456\",\n  \"remarks\": \"Monthly salary\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/payments",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "payments"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Staff Payment By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/payments/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "payments",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Payments By Staff",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/payments/staff/{staffId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "payments",
+                                "staff",
+                                "{staffId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Payments By Staff & Year",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/payments/staff/{staffId}/year/2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "payments",
+                                "staff",
+                                "{staffId}",
+                                "year",
+                                "2026"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Payments By Date Range",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/payments/range?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "payments",
+                                "range"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Total Payments By Date Range",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/payments/total?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "payments",
+                                "total"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Staff Payment",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/payments/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "payments",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Staff Advance",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"staffId\": \"{staffId}\",\n  \"advanceDate\": \"2026-09-06\",\n  \"amount\": 5000,\n  \"reason\": \"Medical emergency\",\n  \"installmentMonths\": 2,\n  \"monthlyDeduction\": 2500,\n  \"remarks\": \"Advance for medical expenses\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/advances",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "advances"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Staff Advance",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"staffId\": \"{staffId}\",\n  \"advanceDate\": \"2026-09-06\",\n  \"amount\": 6000,\n  \"reason\": \"Medical emergency updated\",\n  \"installmentMonths\": 3,\n  \"monthlyDeduction\": 2000,\n  \"remarks\": \"Updated advance\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/advances/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "advances",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Staff Advance By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/advances/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "advances",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Advances By Staff",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/advances/staff/{staffId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "advances",
+                                "staff",
+                                "{staffId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Pending Advances",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/advances/pending",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "advances",
+                                "pending"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Approve Staff Advance",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/advances/{id}/approve?approvedByCandidateId={candidateId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "advances",
+                                "{id}",
+                                "approve"
+                            ],
+                            "query": [
+                                {
+                                    "key": "approvedByCandidateId",
+                                    "value": "{candidateId}"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Reject Staff Advance",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/advances/{id}/reject",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "advances",
+                                "{id}",
+                                "reject"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Repay Staff Advance",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/advances/{id}/repay?repaymentAmount=2500",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "advances",
+                                "{id}",
+                                "repay"
+                            ],
+                            "query": [
+                                {
+                                    "key": "repaymentAmount",
+                                    "value": "2500"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Outstanding Advance For Staff",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/advances/outstanding/{staffId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "advances",
+                                "outstanding",
+                                "{staffId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Staff Advance",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/advances/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "advances",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Staff Salary Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/summary",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "summary"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Staff Salary Summary By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/summary/{staffId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "summary",
+                                "{staffId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Monthly Salary Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/report/monthly?month=9&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "report",
+                                "monthly"
+                            ],
+                            "query": [
+                                {
+                                    "key": "month",
+                                    "value": "9"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Yearly Salary Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/report/yearly?year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "report",
+                                "yearly"
+                            ],
+                            "query": [
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Upload Staff Images",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "images",
+                                    "value": "",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/{id}/images",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "{id}",
+                                "images"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Set Primary Staff Image",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/{id}/primary-image?imageUrl=image-url-here",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "{id}",
+                                "primary-image"
+                            ],
+                            "query": [
+                                {
+                                    "key": "imageUrl",
+                                    "value": "image-url-here"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Remove Staff Image",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/{id}/images?imageUrl=image-url-here",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "{id}",
+                                "images"
+                            ],
+                            "query": [
+                                {
+                                    "key": "imageUrl",
+                                    "value": "image-url-here"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Generate Staff ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/staff/generate-id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "staff",
+                                "generate-id"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "7. Billing & Fee Collection",
+            "item": [
+                {
+                    "name": "Collect Fee",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"candidateId\": \"{candidateId}\",\n  \"collectionDate\": \"2026-09-06\",\n  \"amount\": 5000,\n  \"paymentMonth\": \"SEPTEMBER_2026\",\n  \"paymentYear\": 2026,\n  \"paymentMonthNumber\": 9,\n  \"paymentMethod\": \"CASH\",\n  \"transactionId\": \"TXN123\",\n  \"remarks\": \"Monthly fee\",\n  \"collectedByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/fees",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "fees"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Bulk Collect Fees",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"collectionDate\": \"2026-09-06\",\n  \"paymentMonth\": \"SEPTEMBER_2026\",\n  \"paymentYear\": 2026,\n  \"paymentMonthNumber\": 9,\n  \"paymentMethod\": \"CASH\",\n  \"candidateFees\": [\n    {\n      \"candidateId\": \"candidate-id-1\",\n      \"amount\": 5000,\n      \"remarks\": \"Monthly fee\"\n    },\n    {\n      \"candidateId\": \"candidate-id-2\",\n      \"amount\": 4500,\n      \"remarks\": \"Monthly fee\"\n    }\n  ],\n  \"collectedByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/fees/bulk",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "fees",
+                                "bulk"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Fee Collection By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/fees/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "fees",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Fees By Candidate",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/fees/candidate/{candidateId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "fees",
+                                "candidate",
+                                "{candidateId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Fees By Month",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/fees/month?month=9&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "fees",
+                                "month"
+                            ],
+                            "query": [
+                                {
+                                    "key": "month",
+                                    "value": "9"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Fee Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/fees/summary?month=9&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "fees",
+                                "summary"
+                            ],
+                            "query": [
+                                {
+                                    "key": "month",
+                                    "value": "9"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Fee Collection",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/fees/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "fees",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Generate Monthly Billing",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/generate?month=9&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "generate"
+                            ],
+                            "query": [
+                                {
+                                    "key": "month",
+                                    "value": "9"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Monthly Billing",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/monthly?month=9&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "monthly"
+                            ],
+                            "query": [
+                                {
+                                    "key": "month",
+                                    "value": "9"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Yearly Billing",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/yearly/2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "yearly",
+                                "2026"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Yearly Financial Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/report/yearly/2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "report",
+                                "yearly",
+                                "2026"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Dashboard Data",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/dashboard",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "dashboard"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Profit/Loss Chart",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/profit-loss-chart?year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "profit-loss-chart"
+                            ],
+                            "query": [
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Income/Expense Comparison",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/income-expense-comparison?year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "income-expense-comparison"
+                            ],
+                            "query": [
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Current Month Profit",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/current-month-profit",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "current-month-profit"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Current Year Profit",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/current-year-profit",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "current-year-profit"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Generate All Monthly Billing",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/billing/generate-all",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "billing",
+                                "generate-all"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "8. Party Management",
+            "item": [
+                {
+                    "name": "Create Party",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"partyName\": \"Smith Family\",\n  \"contactPerson\": \"John Smith\",\n  \"phoneNumber\": \"9876543210\",\n  \"email\": \"smith@gmail.com\",\n  \"address\": \"123 Party Hall\",\n  \"eventDate\": \"2026-09-06\",\n  \"numberOfPeople\": 50,\n  \"mealType\": \"VEG\",\n  \"thaliRate\": 200,\n  \"discount\": 10,\n  \"discountType\": \"PERCENTAGE\",\n  \"paymentStatus\": \"PARTIAL\",\n  \"paidAmount\": 5000,\n  \"paymentMethod\": \"CASH\",\n  \"specialRequests\": \"Extra sweets\",\n  \"remarks\": \"Family gathering\",\n  \"enteredByCandidateId\": \"{candidateId}\",\n  \"extraItems\": [\n    {\n      \"itemName\": \"Gulab Jamun\",\n      \"quantity\": 50,\n      \"rate\": 10,\n      \"unit\": \"piece\"\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Party",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"partyName\": \"Smith Family Updated\",\n  \"contactPerson\": \"John Smith\",\n  \"phoneNumber\": \"9876543210\",\n  \"email\": \"smith.updated@gmail.com\",\n  \"address\": \"456 Party Hall\",\n  \"eventDate\": \"2026-09-06\",\n  \"numberOfPeople\": 60,\n  \"mealType\": \"NON_VEG\",\n  \"thaliRate\": 250,\n  \"discount\": 15,\n  \"discountType\": \"PERCENTAGE\",\n  \"paymentStatus\": \"PAID\",\n  \"paidAmount\": 15000,\n  \"paymentMethod\": \"UPI\",\n  \"specialRequests\": \"Extra sweets and cold drinks\",\n  \"remarks\": \"Family gathering updated\",\n  \"enteredByCandidateId\": \"{candidateId}\",\n  \"extraItems\": [\n    {\n      \"itemName\": \"Gulab Jamun\",\n      \"quantity\": 60,\n      \"rate\": 10,\n      \"unit\": \"piece\"\n    },\n    {\n      \"itemName\": \"Cold Drinks\",\n      \"quantity\": 60,\n      \"rate\": 20,\n      \"unit\": \"bottle\"\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Party By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Party By Party ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/party-id/{partyId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "party-id",
+                                "{partyId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Parties",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Parties By Date",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/date/2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "date",
+                                "2026-09-06"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Parties By Date Range",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/range?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "range"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Parties By Payment Status",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/payment-status/PAID",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "payment-status",
+                                "PAID"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Party",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Make Party Payment",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"partyId\": \"{partyId}\",\n  \"amount\": 5000,\n  \"paymentMethod\": \"CASH\",\n  \"transactionId\": \"TXN456\",\n  \"remarks\": \"Partial payment\",\n  \"enteredByCandidateId\": \"{candidateId}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/payments",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "payments"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Mark Party as Paid",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/{id}/mark-paid",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "{id}",
+                                "mark-paid"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Party Payment Status",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/{id}/payment-status?status=PAID",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "{id}",
+                                "payment-status"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "PAID"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Party Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/summary?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "summary"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Total Party Billing",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/total-billing?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "total-billing"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Total Outstanding Amount",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/outstanding",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "outstanding"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Monthly Party Billing",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/monthly-billing?year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "monthly-billing"
+                            ],
+                            "query": [
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Party Revenue Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/revenue-report?year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "revenue-report"
+                            ],
+                            "query": [
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Generate Party ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/generate-id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "generate-id"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Generate Invoice Number",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/parties/generate-invoice",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "parties",
+                                "generate-invoice"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "9. Menu Management",
+            "item": [
+                {
+                    "name": "Create Menu",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"menuDate\": \"2026-09-06\",\n  \"mealType\": \"LUNCH\",\n  \"menuName\": \"Monday Lunch\",\n  \"description\": \"Weekly lunch menu\",\n  \"isSpecial\": false,\n  \"createdByCandidateId\": \"{candidateId}\",\n  \"items\": [\n    {\n      \"itemName\": \"Dal Rice\",\n      \"description\": \"Plain dal with steamed rice\",\n      \"price\": 60,\n      \"category\": \"Main\",\n      \"isVegetarian\": true,\n      \"isAvailable\": true,\n      \"preparationTime\": \"30 mins\",\n      \"servingSize\": \"1 plate\",\n      \"displayOrder\": 1\n    },\n    {\n      \"itemName\": \"Mixed Veg Curry\",\n      \"description\": \"Seasonal vegetables\",\n      \"price\": 80,\n      \"category\": \"Main\",\n      \"isVegetarian\": true,\n      \"isAvailable\": true,\n      \"preparationTime\": \"45 mins\",\n      \"servingSize\": \"1 bowl\",\n      \"displayOrder\": 2\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Menu",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"menuDate\": \"2026-09-06\",\n  \"mealType\": \"LUNCH\",\n  \"menuName\": \"Monday Lunch Updated\",\n  \"description\": \"Updated weekly lunch menu\",\n  \"isSpecial\": true,\n  \"specialRemarks\": \"Special chef's special\",\n  \"createdByCandidateId\": \"{candidateId}\",\n  \"items\": [\n    {\n      \"itemName\": \"Paneer Butter Masala\",\n      \"description\": \"Cottage cheese in creamy gravy\",\n      \"price\": 120,\n      \"category\": \"Main\",\n      \"isVegetarian\": true,\n      \"isAvailable\": true,\n      \"preparationTime\": \"40 mins\",\n      \"servingSize\": \"1 bowl\",\n      \"displayOrder\": 1\n    }\n  ]\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Menu By ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Menu By Date & Meal Type",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/date/2026-09-06/meal/LUNCH",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "date",
+                                "2026-09-06",
+                                "meal",
+                                "LUNCH"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Menus By Date",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/date/2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "date",
+                                "2026-09-06"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Menus By Date Range",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/range?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "range"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Today's Menu",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/today",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "today"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Weekly Menu",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/weekly?startDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "weekly"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Monthly Menu",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/monthly?month=9&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "monthly"
+                            ],
+                            "query": [
+                                {
+                                    "key": "month",
+                                    "value": "9"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Menu",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/{id}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "{id}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Toggle Menu Status",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/{id}/toggle",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "{id}",
+                                "toggle"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Add Menu Item",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"itemName\": \"Butter Naan\",\n  \"description\": \"Butter naan bread\",\n  \"price\": 30,\n  \"category\": \"Bread\",\n  \"isVegetarian\": true,\n  \"isAvailable\": true,\n  \"preparationTime\": \"15 mins\",\n  \"servingSize\": \"1 piece\",\n  \"displayOrder\": 3,\n  \"remarks\": \"Freshly made\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/{menuId}/items",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "{menuId}",
+                                "items"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Menu Item",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"itemName\": \"Butter Naan Updated\",\n  \"description\": \"Butter naan bread with garlic\",\n  \"price\": 35,\n  \"category\": \"Bread\",\n  \"isVegetarian\": true,\n  \"isAvailable\": true,\n  \"preparationTime\": \"20 mins\",\n  \"servingSize\": \"1 piece\",\n  \"displayOrder\": 3,\n  \"remarks\": \"Freshly made with garlic\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/{menuId}/items/{itemId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "{menuId}",
+                                "items",
+                                "{itemId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Remove Menu Item",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/{menuId}/items/{itemId}",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "{menuId}",
+                                "items",
+                                "{itemId}"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Menu Item Availability",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/{menuId}/items/{itemId}/availability?available=false",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "{menuId}",
+                                "items",
+                                "{itemId}",
+                                "availability"
+                            ],
+                            "query": [
+                                {
+                                    "key": "available",
+                                    "value": "false"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Menu Summary",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/summary?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "summary"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Popular Menu Items",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/popular-items?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "popular-items"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Weekly Menu Plan",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/weekly-plan?startDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "weekly-plan"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Copy Menu",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/copy?sourceMenuId={sourceMenuId}&targetDate=2026-09-13&mealType=LUNCH",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "copy"
+                            ],
+                            "query": [
+                                {
+                                    "key": "sourceMenuId",
+                                    "value": "{sourceMenuId}"
+                                },
+                                {
+                                    "key": "targetDate",
+                                    "value": "2026-09-13"
+                                },
+                                {
+                                    "key": "mealType",
+                                    "value": "LUNCH"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Copy Weekly Menu",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/menus/copy-weekly?sourceWeekStart=2026-09-06&targetWeekStart=2026-09-13",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "menus",
+                                "copy-weekly"
+                            ],
+                            "query": [
+                                {
+                                    "key": "sourceWeekStart",
+                                    "value": "2026-09-06"
+                                },
+                                {
+                                    "key": "targetWeekStart",
+                                    "value": "2026-09-13"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "10. Reports",
+            "item": [
+                {
+                    "name": "Generate Comprehensive Report",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"reportType\": \"CUSTOM\",\n  \"startDate\": \"2026-09-01\",\n  \"endDate\": \"2026-09-06\",\n  \"format\": \"PDF\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/generate",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "generate"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Monthly Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/monthly?month=9&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "monthly"
+                            ],
+                            "query": [
+                                {
+                                    "key": "month",
+                                    "value": "9"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Yearly Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/yearly?year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "yearly"
+                            ],
+                            "query": [
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Custom Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/custom?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "custom"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Candidate Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/candidate?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "candidate"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Attendance Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/attendance?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "attendance"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Expense Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/expense?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "expense"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Stock Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/stock",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "stock"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Staff Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/staff?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "staff"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Billing Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/billing?month=9&year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "billing"
+                            ],
+                            "query": [
+                                {
+                                    "key": "month",
+                                    "value": "9"
+                                },
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Party Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/party?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "party"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Menu Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/menu?startDate=2026-09-01&endDate=2026-09-06",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "menu"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startDate",
+                                    "value": "2026-09-01"
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "2026-09-06"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Profit/Loss Report",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/profit-loss?year=2026",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "profit-loss"
+                            ],
+                            "query": [
+                                {
+                                    "key": "year",
+                                    "value": "2026"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Export Report as PDF",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"reportType\": \"MONTHLY\",\n  \"month\": 9,\n  \"year\": 2026,\n  \"format\": \"PDF\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/export/pdf",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "export",
+                                "pdf"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Export Report as Excel",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"reportType\": \"MONTHLY\",\n  \"month\": 9,\n  \"year\": 2026,\n  \"format\": \"EXCEL\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/export/excel",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "export",
+                                "excel"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Export Report as CSV",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"reportType\": \"MONTHLY\",\n  \"month\": 9,\n  \"year\": 2026,\n  \"format\": \"CSV\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/reports/export/csv",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "export",
+                                "csv"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8080",
+            "type": "string"
+        }
+    ]
+}

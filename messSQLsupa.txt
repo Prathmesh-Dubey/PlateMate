@@ -1,0 +1,506 @@
+-- ============================================================
+-- MessMap Backend - Supabase (PostgreSQL) Schema
+-- Generated from JPA entities in src/main/java/com/mess/app/entity
+-- All statements are idempotent (IF NOT EXISTS) - safe to re-run.
+-- Run in the order given (parent tables before dependent tables).
+-- ============================================================
+
+-- Needed for gen_random_uuid() (Supabase has this enabled by default)
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+
+-- ============================================================
+-- 1. USERS  (User.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS users (
+    id                   UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    full_name            TEXT NOT NULL,
+    email                TEXT NOT NULL UNIQUE,
+    phone_number         TEXT NOT NULL UNIQUE,
+    password             TEXT NOT NULL,
+    enabled              BOOLEAN NOT NULL DEFAULT TRUE,
+    email_verified       BOOLEAN NOT NULL DEFAULT FALSE,
+    phone_verified       BOOLEAN NOT NULL DEFAULT FALSE,
+    role                 TEXT NOT NULL DEFAULT 'USER',
+    profile_picture_url  TEXT,
+    created_at           TIMESTAMP DEFAULT now(),
+    updated_at           TIMESTAMP DEFAULT now(),
+    last_login_at        TIMESTAMP
+);
+
+
+-- ============================================================
+-- 2. CANDIDATES  (Candidate.java)
+--    enum status: ACTIVE, INACTIVE, LEFT
+-- ============================================================
+CREATE TABLE IF NOT EXISTS candidates (
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    candidate_id        VARCHAR(10) NOT NULL UNIQUE,
+    full_name           TEXT NOT NULL,
+    phone_number        TEXT,
+    email               TEXT,
+    address             TEXT,
+    joining_date        DATE,
+    leaving_date        DATE,
+    monthly_rate        NUMERIC NOT NULL,
+    status              TEXT,
+    emergency_contact   TEXT,
+    emergency_phone     TEXT,
+    notes               TEXT,
+    profile_image_url   VARCHAR(2048),
+    created_at          TIMESTAMP DEFAULT now(),
+    updated_at          TIMESTAMP DEFAULT now()
+);
+
+
+-- ============================================================
+-- 3. DEPARTMENTS  (Department.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS departments (
+    id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    code           VARCHAR(20) NOT NULL,
+    name           VARCHAR(255) NOT NULL,
+    head_name      VARCHAR(255),
+    contact_email  VARCHAR(255),
+    contact_phone  VARCHAR(50),
+    active         BOOLEAN NOT NULL DEFAULT TRUE,
+    remarks        VARCHAR(500),
+    created_at     TIMESTAMP DEFAULT now(),
+    updated_at     TIMESTAMP DEFAULT now(),
+    CONSTRAINT uk_departments_code UNIQUE (code)
+);
+
+
+-- ============================================================
+-- 4. STAFF  (Staff.java)
+--    enum employment_type: FULL_TIME, PART_TIME, CONTRACT
+--    enum status: ACTIVE, LEFT, ON_LEAVE
+-- ============================================================
+CREATE TABLE IF NOT EXISTS staff (
+    id                   UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    staff_id             VARCHAR(10) NOT NULL UNIQUE,
+    full_name            TEXT NOT NULL,
+    position             TEXT NOT NULL,
+    phone_number         TEXT,
+    email                TEXT,
+    address              TEXT,
+    joining_date         DATE NOT NULL,
+    leaving_date         DATE,
+    base_salary          NUMERIC NOT NULL,
+    employment_type      TEXT,
+    status               TEXT,
+    emergency_contact    TEXT,
+    emergency_phone      TEXT,
+    bank_name            TEXT,
+    bank_account_number  TEXT,
+    ifsc_code            TEXT,
+    pan_number           TEXT,
+    aadhar_number        TEXT,
+    notes                TEXT,
+    primary_image_url    TEXT,
+    created_at           TIMESTAMP DEFAULT now(),
+    updated_at           TIMESTAMP DEFAULT now()
+);
+
+-- @ElementCollection Staff.imageUrls
+CREATE TABLE IF NOT EXISTS staff_images (
+    staff_id   UUID NOT NULL REFERENCES staff(id) ON DELETE CASCADE,
+    image_url  TEXT
+);
+
+
+-- ============================================================
+-- 5. STOCK ITEMS  (StockItem.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS stock_items (
+    id                     UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    item_name              TEXT NOT NULL UNIQUE,
+    category               TEXT NOT NULL,
+    sub_category           TEXT,
+    unit                   TEXT NOT NULL,
+    current_stock          NUMERIC NOT NULL,
+    minimum_stock_level    NUMERIC NOT NULL,
+    maximum_stock_level    NUMERIC NOT NULL,
+    unit_price             NUMERIC,
+    active                 BOOLEAN NOT NULL DEFAULT TRUE,
+    description            TEXT,
+    primary_image_url      TEXT,
+    barcode                TEXT,
+    sku                    TEXT,
+    supplier_name          TEXT,
+    supplier_contact       TEXT,
+    remarks                TEXT,
+    entered_by             UUID REFERENCES candidates(id),
+    created_at             TIMESTAMP DEFAULT now(),
+    updated_at             TIMESTAMP DEFAULT now()
+);
+
+-- @ElementCollection StockItem.imageUrls
+CREATE TABLE IF NOT EXISTS stock_item_images (
+    stock_item_id  UUID NOT NULL REFERENCES stock_items(id) ON DELETE CASCADE,
+    image_url      TEXT
+);
+
+
+-- ============================================================
+-- 6. MENUS  (Menu.java)
+--    enum meal_type: BREAKFAST, LUNCH, DINNER
+-- ============================================================
+CREATE TABLE IF NOT EXISTS menus (
+    id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    menu_date        DATE NOT NULL,
+    meal_type        TEXT NOT NULL,
+    menu_name        TEXT NOT NULL,
+    description      TEXT,
+    is_active        BOOLEAN NOT NULL DEFAULT TRUE,
+    is_special       BOOLEAN DEFAULT FALSE,
+    special_remarks  TEXT,
+    created_by       UUID REFERENCES candidates(id),
+    created_at       TIMESTAMP DEFAULT now(),
+    updated_at       TIMESTAMP DEFAULT now()
+);
+
+
+-- ============================================================
+-- 7. PARTIES  (Party.java)
+--    enum payment_status: PAID, PENDING, PARTIAL
+-- ============================================================
+CREATE TABLE IF NOT EXISTS parties (
+    id                     UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    party_id               VARCHAR(10) NOT NULL UNIQUE,
+    party_name             TEXT NOT NULL,
+    contact_person         TEXT,
+    phone_number           TEXT,
+    email                  TEXT,
+    address                TEXT,
+    event_date             DATE NOT NULL,
+    number_of_people       INTEGER NOT NULL,
+    meal_type              TEXT NOT NULL,
+    thali_rate             NUMERIC NOT NULL,
+    total_thali_amount     NUMERIC NOT NULL,
+    extra_items            TEXT,
+    extra_items_amount     NUMERIC,
+    discount               NUMERIC,
+    discount_type          TEXT,
+    total_bill             NUMERIC NOT NULL,
+    payment_status         TEXT,
+    paid_amount            NUMERIC,
+    pending_amount         NUMERIC,
+    payment_method         TEXT,
+    transaction_id         TEXT,
+    invoice_number         TEXT,
+    special_requests       TEXT,
+    remarks                TEXT,
+    department_id          VARCHAR(36),
+    department_code        VARCHAR(20),
+    additional_departments VARCHAR(255),
+    entered_by             UUID REFERENCES candidates(id),
+    created_at             TIMESTAMP DEFAULT now(),
+    updated_at             TIMESTAMP DEFAULT now()
+);
+
+
+-- ============================================================
+-- 8. OTPS  (Otp.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS otps (
+    id           BIGSERIAL PRIMARY KEY,
+    email        TEXT NOT NULL,
+    otp_code     TEXT NOT NULL,
+    purpose      TEXT NOT NULL,
+    expiry_time  TIMESTAMP NOT NULL,
+    is_used      BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at   TIMESTAMP DEFAULT now()
+);
+
+
+-- ============================================================
+-- 9. REFRESH TOKENS  (RefreshToken.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS refresh_tokens (
+    id           BIGSERIAL PRIMARY KEY,
+    token        TEXT NOT NULL UNIQUE,
+    user_id      UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    expiry_date  TIMESTAMP NOT NULL,
+    created_at   TIMESTAMP
+);
+
+
+-- ============================================================
+-- 10. DAILY ATTENDANCE  (DailyAttendance.java)
+--     enum status: IN, OUT, HALF_DAY, LEAVE
+-- ============================================================
+CREATE TABLE IF NOT EXISTS daily_attendance (
+    id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    candidate_id     UUID NOT NULL REFERENCES candidates(id) ON DELETE CASCADE,
+    attendance_date  DATE NOT NULL,
+    status           TEXT NOT NULL,
+    in_time          TIME,
+    out_time         TIME,
+    remarks          TEXT,
+    is_present       BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at       TIMESTAMP DEFAULT now(),
+    updated_at       TIMESTAMP DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_daily_attendance_candidate_id ON daily_attendance(candidate_id);
+
+
+-- ============================================================
+-- 11. DAILY MEALS  (DailyMeal.java)
+--     enum meal_type: BREAKFAST, LUNCH, DINNER
+-- ============================================================
+CREATE TABLE IF NOT EXISTS daily_meals (
+    id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    candidate_id      UUID NOT NULL REFERENCES candidates(id) ON DELETE CASCADE,
+    meal_date         DATE NOT NULL,
+    meal_type         TEXT NOT NULL,
+    is_taken          BOOLEAN NOT NULL DEFAULT FALSE,
+    meal_preference   TEXT,
+    remarks           TEXT,
+    created_at        TIMESTAMP DEFAULT now(),
+    updated_at        TIMESTAMP DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_daily_meals_candidate_id ON daily_meals(candidate_id);
+
+
+-- ============================================================
+-- 12. EXPENSES  (Expense.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS expenses (
+    id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    item_name        TEXT NOT NULL,
+    quantity         NUMERIC NOT NULL,
+    unit             TEXT NOT NULL,
+    rate             NUMERIC NOT NULL,
+    total_amount     NUMERIC NOT NULL,
+    category         TEXT NOT NULL,
+    sub_category     TEXT,
+    vendor_name      TEXT,
+    vendor_phone     TEXT,
+    invoice_number   TEXT,
+    expense_date     DATE NOT NULL,
+    payment_method   TEXT,
+    payment_status   TEXT,
+    attachment_url   TEXT,
+    attachment_name  TEXT,
+    remarks          TEXT,
+    entered_by       UUID REFERENCES candidates(id),
+    created_at       TIMESTAMP DEFAULT now(),
+    updated_at       TIMESTAMP DEFAULT now()
+);
+
+
+-- ============================================================
+-- 13. FEE COLLECTIONS  (FeeCollection.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS fee_collections (
+    id                     UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    candidate_id           UUID NOT NULL REFERENCES candidates(id) ON DELETE CASCADE,
+    collection_date        DATE NOT NULL,
+    amount                 NUMERIC NOT NULL,
+    payment_month          TEXT NOT NULL,
+    payment_year           INTEGER NOT NULL,
+    payment_month_number   INTEGER NOT NULL,
+    payment_method         TEXT,
+    transaction_id         TEXT,
+    receipt_number         TEXT,
+    is_paid                BOOLEAN NOT NULL DEFAULT FALSE,
+    remarks                TEXT,
+    collected_by           UUID REFERENCES candidates(id),
+    created_at             TIMESTAMP DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_fee_collections_candidate_id ON fee_collections(candidate_id);
+
+
+-- ============================================================
+-- 14. LOW STOCK ALERTS  (LowStockAlert.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS low_stock_alerts (
+    id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    stock_item_id  UUID NOT NULL REFERENCES stock_items(id) ON DELETE CASCADE,
+    alert_message  TEXT NOT NULL,
+    is_resolved    BOOLEAN NOT NULL DEFAULT FALSE,
+    resolved_at    TIMESTAMP,
+    resolved_by    TEXT,
+    created_at     TIMESTAMP DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_low_stock_alerts_stock_item_id ON low_stock_alerts(stock_item_id);
+
+
+-- ============================================================
+-- 15. MENU ITEMS  (MenuItem.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS menu_items (
+    id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    menu_id           UUID NOT NULL REFERENCES menus(id) ON DELETE CASCADE,
+    item_name         TEXT NOT NULL,
+    description       TEXT,
+    price             NUMERIC NOT NULL,
+    category          TEXT,
+    is_vegetarian     BOOLEAN DEFAULT TRUE,
+    is_available      BOOLEAN DEFAULT TRUE,
+    preparation_time  TEXT,
+    serving_size      TEXT,
+    image_url         TEXT,
+    display_order     INTEGER DEFAULT 0,
+    remarks           TEXT,
+    created_at        TIMESTAMP DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_menu_items_menu_id ON menu_items(menu_id);
+
+
+-- ============================================================
+-- 16. PARTY EXTRA ITEMS  (PartyExtraItem.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS party_extra_items (
+    id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    party_id      UUID NOT NULL REFERENCES parties(id) ON DELETE CASCADE,
+    item_name     TEXT NOT NULL,
+    quantity      INTEGER NOT NULL,
+    rate          NUMERIC NOT NULL,
+    total_amount  NUMERIC NOT NULL,
+    unit          TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_party_extra_items_party_id ON party_extra_items(party_id);
+
+
+-- ============================================================
+-- 17. STAFF ADVANCES  (StaffAdvance.java)
+--     enum status: PENDING, APPROVED, REJECTED, REPAID
+-- ============================================================
+CREATE TABLE IF NOT EXISTS staff_advances (
+    id                   UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    staff_id             UUID NOT NULL REFERENCES staff(id) ON DELETE CASCADE,
+    advance_date         DATE NOT NULL,
+    amount               NUMERIC NOT NULL,
+    reason               TEXT NOT NULL,
+    status               TEXT,
+    repayment_date       DATE,
+    repayment_amount     NUMERIC,
+    remaining_amount     NUMERIC,
+    installment_months   INTEGER,
+    monthly_deduction    NUMERIC,
+    remarks              TEXT,
+    approved_by          UUID REFERENCES candidates(id),
+    entered_by           UUID REFERENCES candidates(id),
+    created_at           TIMESTAMP DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_staff_advances_staff_id ON staff_advances(staff_id);
+
+
+-- ============================================================
+-- 18. STAFF PAYMENTS  (StaffPayment.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS staff_payments (
+    id                     UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    staff_id               UUID NOT NULL REFERENCES staff(id) ON DELETE CASCADE,
+    payment_date           DATE NOT NULL,
+    amount                 NUMERIC NOT NULL,
+    payment_month          TEXT NOT NULL,
+    payment_year           INTEGER NOT NULL,
+    payment_month_number   INTEGER NOT NULL,
+    bonus                  NUMERIC,
+    deductions             NUMERIC,
+    net_amount             NUMERIC,
+    payment_method         TEXT,
+    transaction_id         TEXT,
+    reference_number       TEXT,
+    remarks                TEXT,
+    entered_by             UUID REFERENCES candidates(id),
+    created_at             TIMESTAMP DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_staff_payments_staff_id ON staff_payments(staff_id);
+
+
+-- ============================================================
+-- 19. STOCK TRANSACTIONS  (StockTransaction.java)
+--     enum transaction_type: PURCHASE, USAGE, RETURN, ADJUSTMENT
+-- ============================================================
+CREATE TABLE IF NOT EXISTS stock_transactions (
+    id                 UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    stock_item_id      UUID NOT NULL REFERENCES stock_items(id) ON DELETE CASCADE,
+    transaction_type   TEXT NOT NULL,
+    quantity           NUMERIC NOT NULL,
+    unit_price         NUMERIC NOT NULL,
+    total_amount       NUMERIC NOT NULL,
+    stock_before       NUMERIC,
+    stock_after        NUMERIC,
+    transaction_date   DATE,
+    reference_number   TEXT,
+    reference_type     TEXT,
+    reference_id       TEXT,
+    remarks            TEXT,
+    entered_by         UUID REFERENCES candidates(id),
+    created_at         TIMESTAMP DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_stock_transactions_stock_item_id ON stock_transactions(stock_item_id);
+
+
+-- ============================================================
+-- 20. COLLEGE BILLING  (CollegeBilling.java)
+--     enum status: UNPAID, PARTIALLY_PAID, PAID
+-- ============================================================
+CREATE TABLE IF NOT EXISTS college_billing (
+    id                          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    college                     VARCHAR(255) NOT NULL,
+    month                       INTEGER NOT NULL,
+    year                        INTEGER NOT NULL,
+    billing_date                DATE,
+    total_student_attendance    INTEGER,
+    total_thalis_served         INTEGER,
+    rate_per_thali               NUMERIC(10,2),
+    total_billable_amount       NUMERIC(15,2) NOT NULL,
+    amount_received             NUMERIC(15,2) NOT NULL,
+    outstanding_balance         NUMERIC(15,2) NOT NULL,
+    status                      VARCHAR(30) NOT NULL,
+    remarks                     VARCHAR(1000),
+    created_at                  TIMESTAMP DEFAULT now(),
+    updated_at                  TIMESTAMP DEFAULT now(),
+    CONSTRAINT uk_college_billing_college_month_year UNIQUE (college, month, year)
+);
+
+
+-- ============================================================
+-- 21. MONTHLY BILLING  (MonthlyBilling.java)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS monthly_billing (
+    id                          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    month                       INTEGER NOT NULL,
+    year                        INTEGER NOT NULL,
+    month_name                  TEXT NOT NULL,
+    month_start_date            DATE NOT NULL,
+    month_end_date              DATE NOT NULL,
+    mess_fees_income            NUMERIC NOT NULL DEFAULT 0,
+    party_income                NUMERIC NOT NULL DEFAULT 0,
+    other_income                NUMERIC NOT NULL DEFAULT 0,
+    total_income                NUMERIC NOT NULL DEFAULT 0,
+    stock_expenses               NUMERIC NOT NULL DEFAULT 0,
+    staff_salary_expenses        NUMERIC NOT NULL DEFAULT 0,
+    other_expenses               NUMERIC NOT NULL DEFAULT 0,
+    total_expenses               NUMERIC NOT NULL DEFAULT 0,
+    profit                       NUMERIC NOT NULL DEFAULT 0,
+    loss                         NUMERIC NOT NULL DEFAULT 0,
+    net_profit_loss              NUMERIC NOT NULL DEFAULT 0,
+    profit_margin_percentage     NUMERIC NOT NULL DEFAULT 0,
+    total_candidates             INTEGER,
+    total_staff                  INTEGER,
+    total_parties                INTEGER,
+    remarks                      TEXT,
+    is_generated                 BOOLEAN NOT NULL DEFAULT FALSE,
+    generated_date                DATE NOT NULL,
+    created_at                   TIMESTAMP DEFAULT now(),
+    updated_at                   TIMESTAMP DEFAULT now()
+);
+
+-- ============================================================
+-- END OF SCHEMA
+-- ============================================================
